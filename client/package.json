@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^2.2.5",
     "@stripe/react-stripe-js": "^2.7.1",
     "@stripe/stripe-js": "^3.5.0",
+    "@types/react-redux": "^7.1.33",
     "axios": "^1.7.2",
     "formik": "^2.4.6",
     "react": "^18.2.0",

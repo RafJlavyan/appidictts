@@ -1,6 +1,6 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from "mongoose";
 
-export interface User {
+export interface UserType {
   _id: string;
   googleId?: string;
   username: string;
@@ -25,13 +25,15 @@ const UserSchema: Schema = new Schema(
       required: true,
       unique: true,
     },
-    password: String,
+    password: {
+      type: String,
+    },
     isAdmin: { type: Boolean, default: false },
     credits: { type: Number, default: 0 },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
-const UserModel = mongoose.model<User>('User', UserSchema);
+const UserModel = mongoose.model<UserType>("User", UserSchema);
 
 export default UserModel;

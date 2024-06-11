@@ -1,7 +1,7 @@
-import jwt from 'jsonwebtoken';
-import { User } from '../models/user.model';
+import jwt from "jsonwebtoken";
+import { UserType } from "../models/user.model";
 
-export const generateAccessToken = (user: User) => {
+export const generateAccessToken = (user: UserType) => {
   return jwt.sign(
     {
       user: user._id,
@@ -15,7 +15,7 @@ export const generateAccessToken = (user: User) => {
   );
 };
 
-export const generateRefreshToken = (user: User) => {
+export const generateRefreshToken = (user: UserType) => {
   return jwt.sign(
     {
       user: user._id,
@@ -27,7 +27,7 @@ export const generateRefreshToken = (user: User) => {
   );
 };
 
-export const generateResetToken = (user: User) => {
+export const generateResetToken = (user: UserType) => {
   return jwt.sign(
     {
       user: user._id,

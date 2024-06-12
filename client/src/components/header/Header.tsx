@@ -10,6 +10,9 @@ import { useDispatch, useSelector } from "react-redux";
 //   updateTransVideos,
 // } from "@/stores/transVideoSlice";
 import { fetchUserData } from "@/stores/userSlice";
+import { RootState } from "@/stores/store"; // Assuming you have defined RootState
+import { ThunkDispatch } from "redux-thunk";
+import { UnknownAction } from "@reduxjs/toolkit";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -21,7 +24,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        dispatch(fetchUserData());
+        await (dispatch as ThunkDispatch<RootState, unknown, UnknownAction>)(fetchUserData());
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching user data:", error);

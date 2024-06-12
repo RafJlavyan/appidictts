@@ -28,17 +28,17 @@ export const fetchUserData = createAsyncThunk<UserData>(
   "user/fetchUserData",
   async () => {
     try {
-      const { data } = await Axios.get("/oauth/get-user");
-      /* check if the user signed in with google account , and if so , set google user id to localStorage
-       and get it into API that will find the user in database */
-      if (data) {
-        const googleUserId = data.userId;
-        localStorage.setItem("userId", JSON.stringify(googleUserId));
-        const response = await Axios.get<UserData>(
-          `/users/get-user-data/${googleUserId}`
-        );
-        return response.data;
-      }
+      // const { data } = await Axios.get<UserData>("/oauth/get-user");
+      // /* check if the user signed in with google account , and if so , set google user id to localStorage
+      //  and get it into API that will find the user in database */
+      // if (data) {
+      //   const googleUserId = data.googleId;
+      //   localStorage.setItem("userId", JSON.stringify(googleUserId));
+      //   const response = await Axios.get<UserData>(
+      //     `/users/get-user-data/${googleUserId}`
+      //   );
+      //   return response.data;
+      // }
       /* if user signed in with manually created account then the id will be in localStorage based on 
       login functionality */
       const userId = localStorage.getItem("userId");
@@ -54,7 +54,7 @@ export const fetchUserData = createAsyncThunk<UserData>(
   }
 );
 
-export const fetchGoogleUserData = createAsyncThunk(
+export const fetchGoogleUserData = createAsyncThunk<any>(
   "user/fetchGoogleUserData",
   async () => {
     try {
